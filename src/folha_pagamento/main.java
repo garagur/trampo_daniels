@@ -13,18 +13,27 @@ public class main {
 
 
     	        Cargo junior = new Cargo("junior",1000, 120);
+    	        Cargo Senior = new Cargo("Senior",5000, 120);
+    	        Cargo Estagiario = new Cargo("junior",1000, 120);
     	        
     	        
+    	        Senior.adicionarImposto(inss);
+    	        Senior.adicionarImposto(fgts);
+    	        Senior.adicionarImposto(taxaBanco);
 
-
+    	        junior.adicionarImposto(inss);
+    	        junior.adicionarImposto(taxaBanco);
+    	        
+    	        
     	        Funcionarios mateus = new Funcionarios("Mateus", "Rua X", "123", "Bradesco", 300);
     	        Funcionarios joao = new Funcionarios("Joao", "Rua Y", "456", "Caixa", 100);
 
-    	        double liqMateus = sistema.calcularLiquido(mateus, junior, junior.getImpostosDoCargo());
+    	        double liqMateus = sistema.calcularLiquido(mateus, Senior, Senior.getImpostosDoCargo());
     
 
     	        System.out.println("Holerite: " + mateus.getNome());
     	        System.out.println("Cargo: " + junior.getTitulo());
+    	        System.out.println("Imposto: " + Senior.getImpostosDoCargo());
     	        System.out.println("Salário Líquido: R$ " + liqMateus);
     	    }
     	}
