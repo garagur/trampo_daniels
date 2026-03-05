@@ -4,6 +4,7 @@ package folha_pagamento;
 public class main {
     public static void main(String[] args) {
     	        	
+<<<<<<< HEAD
     	        Pagamentos sistema = new Pagamentos();
 
     
@@ -35,6 +36,10 @@ public class main {
     	        System.out.println("Cargo: " + junior.getTitulo());
     	        System.out.println("Imposto: " + Senior.getImpostosDoCargo());
     	        System.out.println("Salário Líquido: R$ " + liqMateus);
+=======
+    	new insert_dados().executar();
+    	
+>>>>>>> 1d0cdb9 (feat: nova estrutura de banco de dados para o sistema de salas)
     	    }
     	}
         
