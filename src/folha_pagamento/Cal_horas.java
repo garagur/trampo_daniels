@@ -1,12 +1,11 @@
 	package folha_pagamento;
 	
-	import java.util.List;
 	
-	public class Cal_horas implements interface_pagamentos {
+	public class Cal_horas implements interface_pagamentos_horas {
 	
 	    @Override
-	    public double calcularLiquido(Funcionarios funcionario, Cargo cargo, List<Imposto> impostos, Horas horas) {
-	        double salarioBase = cargo.getSalario_bru();
+	    public double calcularLiquido_horas(Funcionarios funcionario, Horas horas) {
+	        double salarioBase = funcionario.getSalario_bru();
 	        double horasExtra = horas.getHoras_ex();
 	        double horasDesc = horas.getHoras_faltadas();
 	        double valorHora = salarioBase * 0.01;
@@ -15,7 +14,7 @@
 	        if (horasExtra > horasDesc) {
 	            double saldoExtra = horasExtra - horasDesc;
 	
-	            if (cargo.getTitulo().equalsIgnoreCase("Estagiario")) {
+	            if (funcionario.getTitulo().equalsIgnoreCase("Estagiario")) {
 	                salarioBrutoFinal = salarioBase;
 	            } else {
 	                double valorBonus = saldoExtra * valorHora;
@@ -28,7 +27,7 @@
 	            }
 	        } else {
 	            double saldoFaltas;
-	            if (cargo.getTitulo().equalsIgnoreCase("Estagiario")) {
+	            if (funcionario.getTitulo().equalsIgnoreCase("Estagiario")) {
 	                saldoFaltas = horasDesc;
 	            } else {
 	                saldoFaltas = horasDesc - horasExtra;
