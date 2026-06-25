@@ -1,42 +1,31 @@
 package com.example.trabalhodaniel.controller;
 
-import com.example.trabalhodaniel.domain.entity.Funcionario;
-import com.example.trabalhodaniel.domain.repository.CargoFactoryPort;
-import com.example.trabalhodaniel.domain.repository.FuncionarioRepository;
-import com.example.trabalhodaniel.domain.repository.Imposto;
-import com.example.trabalhodaniel.domain.repository.Interface_Cargos;
-import com.example.trabalhodaniel.service.ServicoRH;
 import org.springframework.web.bind.annotation.RestController;
+
+import com.example.trabalhodaniel.domain.entity.Funcionario;
+import com.example.trabalhodaniel.domain.repository.FuncionarioRepository;
+import com.example.trabalhodaniel.domain.repository.Interface_Cargos;
+import com.example.trabalhodaniel.user_cases.ServicoRH;
 
 @RestController
 public class FuncionarioController {
 
     private final ServicoRH servicoRH;
-    private final CargoFactoryPort cargoFactory;
     private final FuncionarioRepository funcionarioRepository;
 
-    public FuncionarioController(ServicoRH servicoRH, CargoFactoryPort cargoFactory,
-            FuncionarioRepository funcionarioRepository) {
+    public FuncionarioController(ServicoRH servicoRH, FuncionarioRepository funcionarioRepository) {
         this.servicoRH = servicoRH;
-        this.cargoFactory = cargoFactory;
         this.funcionarioRepository = funcionarioRepository;
     }
 
     public void processarFuncionario(
             String nome,
-            String nomeCargo,
-            Imposto[] impostos,
+            Interface_Cargos cargo,
             int horasExtras,
             int horasDesconto) {
 
-        Interface_Cargos cargo = cargoFactory.criar(nomeCargo, impostos);
-
-        Funcionario funcionario = new Funcionario(nome, cargo, horasExtras, horasDesconto);
-
-        // Salvar funcionário no banco primeiro
-        funcionario = funcionarioRepository.save(funcionario);
-
-        // Depois processar a folha
+        Funcionario funcionario = new Funcionario(null, nome, cargo, horasExtras, horasDesconto);
+        funcionario = funcionarioRepository.salvar(funcionario);
         servicoRH.processarFolha(funcionario);
     }
 }

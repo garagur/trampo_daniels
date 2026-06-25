@@ -1,4 +1,4 @@
-package com.example.trabalhodaniel.domain.entity;
+package com.example.trabalhodaniel.infrastructure.acrecimos;
 
 public class Acrecimo_horas {
     public int horasAcrescimo;

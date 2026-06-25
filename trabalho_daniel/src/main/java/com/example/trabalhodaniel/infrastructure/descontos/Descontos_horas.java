@@ -1,10 +1,5 @@
-package com.example.trabalhodaniel.domain.entity;
+package com.example.trabalhodaniel.infrastructure.descontos;
 
-import jakarta.persistence.Embeddable;
-import lombok.NoArgsConstructor;
-
-@NoArgsConstructor
-@Embeddable
 public class Descontos_horas {
     public int horasDesconto;
 

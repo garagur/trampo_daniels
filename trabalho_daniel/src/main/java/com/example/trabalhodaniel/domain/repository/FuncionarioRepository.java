@@ -1,10 +1,13 @@
 package com.example.trabalhodaniel.domain.repository;
 
 import com.example.trabalhodaniel.domain.entity.Funcionario;
-import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.stereotype.Repository;
+import java.util.List;
+import java.util.Optional;
 
-@Repository
-public interface FuncionarioRepository extends JpaRepository<Funcionario, Long> {
+public interface FuncionarioRepository {
+    Funcionario salvar(Funcionario funcionario);
 
+    List<Funcionario> listarTodos();
+
+    Optional<Funcionario> buscarPorNome(String nome);
 }

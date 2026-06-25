@@ -1,4 +1,4 @@
-package com.example.trabalhodaniel.domain.entity;
+package com.example.trabalhodaniel.infrastructure.descontos;
 
 import com.example.trabalhodaniel.domain.repository.Imposto;
 

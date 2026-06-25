@@ -1,22 +1,21 @@
-package com.example.trabalhodaniel.domain.entity;
+package com.example.trabalhodaniel.infrastructure.descontos;
 
 import com.example.trabalhodaniel.domain.repository.Imposto;
 
-public class Imposto_INSS implements Imposto {
-
+public class Imposto_IRPF implements Imposto {
     private final double salarioBase;
 
-    public Imposto_INSS(double salarioBase) {
+    public Imposto_IRPF(double salarioBase) {
         this.salarioBase = salarioBase;
     }
 
     @Override
     public double calcularValorImposto() {
-        return this.salarioBase * 0.11;
+        return salarioBase * 0.15;
     }
 
     @Override
     public String getNomeImposto() {
-        return "INSS";
+        return "IRPF";
     }
 }

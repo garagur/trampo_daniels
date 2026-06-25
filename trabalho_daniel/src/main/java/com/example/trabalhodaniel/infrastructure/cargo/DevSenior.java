@@ -4,12 +4,10 @@ import com.example.trabalhodaniel.domain.repository.Interface_Cargos;
 import com.example.trabalhodaniel.domain.repository.Imposto;
 import org.springframework.stereotype.Component;
 
-@Component
 public class DevSenior implements Interface_Cargos {
 
     private static final double SALARIO_BASE = 8000.0;
     private static final int HORAS_EXIGIDAS = 160;
-
     private final Imposto[] impostos;
 
     public DevSenior(Imposto[] impostos) {
@@ -34,5 +32,12 @@ public class DevSenior implements Interface_Cargos {
     @Override
     public Imposto[] getImpostos() {
         return impostos;
+    }
+
+    @Component
+    public static class Registrar {
+        public Registrar(CargoFactory factory) {
+            factory.registrar("DevSenior", impostos -> new DevSenior(impostos));
+        }
     }
 }

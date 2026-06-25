@@ -1,4 +1,4 @@
-package com.example.trabalhodaniel.service;
+package com.example.trabalhodaniel.user_cases;
 
 import com.example.trabalhodaniel.domain.repository.Imposto;
 import com.example.trabalhodaniel.domain.repository.Interface_Cargos;
